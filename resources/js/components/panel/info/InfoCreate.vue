@@ -155,15 +155,6 @@ export default {
                 .catch();
         },
 
-        showProducts() {
-
-            axios.get('/api/panel/product/by/category/' + document.getElementById('productCategory').value)
-                .then((response) => {
-                    this.products = response.data.data;
-                    console.log(response.data.data)
-                })
-                .catch();
-        },
         async createInfo() {
             this.errors = [];
             let emptyFieldsCount = 0;
@@ -179,25 +170,25 @@ export default {
                 }
             });
             if (emptyFieldsCount === 0) {
-                await axios.post('/api/panel/blog', {
-                    image: document.getElementById('Image__code').value,
-                    title: document.getElementById('title').value,
-                    blog_category_id: document.getElementById('category').value,
-                    text: document.getElementById('text').value,
-                    // product_id: document.getElementById('product_id').value,
-                    // blog_tag_id: document.getElementById('blog_tag_id').value,
-
-                    // image2: document.getElementById('Image_product_code').value,
-                    // text2: document.getElementById('text2').value,
-                    // text3: document.getElementById('text3').value,
-                    // text4: document.getElementById('text4').value,
-                    // tags: tags,
+                await axios.post('/api/panel/info', {
+                    followers  : document.getElementById('followers').value,
+                    followers_growth : document.getElementById('followers_growth').value,
+                    views: document.getElementById('views').value,
+                    accounts_reached: document.getElementById('accounts_reached').value,
+                    watch_time: document.getElementById('watch_time').value,
+                    profile_activity: document.getElementById('profile_activity').value,
+                    interaction: document.getElementById('interaction').value,
+                    accounts_engaged : document.getElementById('accounts_engaged').value,
+                    likes: document.getElementById('likes').value,
+                    comments: document.getElementById('comments').value,
+                    saves: document.getElementById('saves').value,
+                    shares: document.getElementById('shares').value
                 })
                     .then((response) => {
                         console.log(response.data)
                         if (response.status === 201 || response.status === 200) {
                             setTimeout(() => {
-                                this.$router.push({path: '/panel/blogs'});
+                                this.$router.push({path: '/panel/infos'});
                             }, 1000);
 
                         }

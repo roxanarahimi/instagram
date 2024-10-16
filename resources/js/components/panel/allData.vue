@@ -18,10 +18,10 @@
 
     <loader/>
 
-    <div class="mb-3 col-lg-6" :class="{'d-none': model === 'foodSlide'}">
-      <label for="search" class="form-label">جستوجو</label>
-      <input @input="loadData" type="text" class="form-control" id="search" >
-    </div>
+<!--    <div class="mb-3 col-lg-6" :class="{'d-none': model === 'foodSlide'}">-->
+<!--      <label for="search" class="form-label">جستوجو</label>-->
+<!--      <input @input="loadData" type="text" class="form-control" id="search" >-->
+<!--    </div>-->
     <div class="col-12 mb-3" v-if="allData && allData.length">
       <Suspense>
         <component :is="model+'sTable'" :allData="allData" :page="page" :model="model" :loadData="loadData"/>
@@ -44,14 +44,12 @@ import Pagination from "../components/Pagination";
 
 import usersTable from "./user/usersTable";
 import adminsTable from "./admin/adminsTable";
-
-import blogsTable from "./blog/blogsTable";
 import infosTable from "./info/infosTable";
 
 export default {
   components: {
     Loader, AllDataContainer, Pagination, usersTable,
-    adminsTable,  blogsTable, infosTable,
+    adminsTable, infosTable,
          },
   setup() {
     const model = ref();

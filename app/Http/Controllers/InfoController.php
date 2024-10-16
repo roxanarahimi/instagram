@@ -12,7 +12,7 @@ class InfoController extends Controller
     {
         try {
             $perPage = $request['perPage'];
-            $data = Info::orderBy('index')->orderByDesc('id')->paginate($perPage);
+            $data = Info::orderByDesc('id')->orderByDesc('id')->paginate($perPage);
             $pages_count = ceil($data->total() / $perPage);
             $labels = [];
             for ($i = 1; $i <= $pages_count; $i++) {

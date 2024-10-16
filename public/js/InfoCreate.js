@@ -1136,16 +1136,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log('aaa', response);
       })["catch"]();
     },
-    showProducts: function showProducts() {
-      var _this = this;
-
-      axios.get('/api/panel/product/by/category/' + document.getElementById('productCategory').value).then(function (response) {
-        _this.products = response.data.data;
-        console.log(response.data.data);
-      })["catch"]();
-    },
     createInfo: function createInfo() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var emptyFieldsCount, req;
@@ -1153,7 +1145,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _this2.errors = [];
+                _this.errors = [];
                 emptyFieldsCount = 0;
                 req = document.querySelectorAll('[required]');
                 req.forEach(function (element) {
@@ -1173,25 +1165,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context4.next = 7;
-                return axios.post('/api/panel/blog', {
-                  image: document.getElementById('Image__code').value,
-                  title: document.getElementById('title').value,
-                  blog_category_id: document.getElementById('category').value,
-                  text: document.getElementById('text').value // product_id: document.getElementById('product_id').value,
-                  // blog_tag_id: document.getElementById('blog_tag_id').value,
-                  // image2: document.getElementById('Image_product_code').value,
-                  // text2: document.getElementById('text2').value,
-                  // text3: document.getElementById('text3').value,
-                  // text4: document.getElementById('text4').value,
-                  // tags: tags,
-
+                return axios.post('/api/panel/info', {
+                  followers: document.getElementById('followers').value,
+                  followers_growth: document.getElementById('followers_growth').value,
+                  views: document.getElementById('views').value,
+                  accounts_reached: document.getElementById('accounts_reached').value,
+                  watch_time: document.getElementById('watch_time').value,
+                  profile_activity: document.getElementById('profile_activity').value,
+                  interaction: document.getElementById('interaction').value,
+                  accounts_engaged: document.getElementById('accounts_engaged').value,
+                  likes: document.getElementById('likes').value,
+                  comments: document.getElementById('comments').value,
+                  saves: document.getElementById('saves').value,
+                  shares: document.getElementById('shares').value
                 }).then(function (response) {
                   console.log(response.data);
 
                   if (response.status === 201 || response.status === 200) {
                     setTimeout(function () {
-                      _this2.$router.push({
-                        path: '/panel/blogs'
+                      _this.$router.push({
+                        path: '/panel/infos'
                       });
                     }, 1000);
                   }
@@ -1200,10 +1193,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     var errorList = Array(error.response.data);
 
                     for (var i = 0; i < errorList.length; i++) {
-                      _this2.errors = errorList[i];
+                      _this.errors = errorList[i];
                     }
 
-                    console.log(_this2.errors.toString());
+                    console.log(_this.errors.toString());
                   } else if (error.status === 500) {
                     if (error.response.data.message.includes("SQLSTATE")) {
                       var showAlertSql = /*#__PURE__*/function () {
