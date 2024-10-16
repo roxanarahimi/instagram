@@ -314,3 +314,14 @@ Route::get('/food/slides', [\App\Http\Controllers\FoodSlideController::class,'in
 Route::get('/search', [\App\Http\Controllers\SearchController::class,'search']);
 Route::get('/fix', [\App\Http\Controllers\ProductController::class,'fix']);
 
+Route::controller(\App\Http\Controllers\InfoController::class)->group(function () {
+    Route::prefix('panel')->group(function () {
+        Route::prefix('info')->group(function () {
+            Route::get('/', 'index');
+            Route::get('/{id}', 'show');
+            Route::post('/', 'store');
+            Route::put('/{id}', 'update');
+            Route::delete('/{id}', 'delete');
+        });
+    });
+});

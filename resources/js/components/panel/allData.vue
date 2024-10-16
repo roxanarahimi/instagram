@@ -42,25 +42,17 @@ import Loader from "../components/Loader";
 import AllDataContainer from "./AllDataContainer";
 import Pagination from "../components/Pagination";
 
-import productsTable from "./product/productsTable";
-import articlesTable from "./article/articlesTable";
 import usersTable from "./user/usersTable";
 import adminsTable from "./admin/adminsTable";
 
-import financesTable from "./finance/financesTable";
 import blogsTable from "./blog/blogsTable";
-import teasersTable from "./teaser/teasersTable";
-
-import ordersTable from "./order/ordersTable";
-import foodSlidesTable from "./foodSlide/foodSlidesTable";
+import infosTable from "./info/infosTable";
 
 export default {
   components: {
-    Loader, AllDataContainer, Pagination,
-    productsTable, usersTable, articlesTable,
-    adminsTable,  financesTable,blogsTable, teasersTable,ordersTable,
-       foodSlidesTable
-  },
+    Loader, AllDataContainer, Pagination, usersTable,
+    adminsTable,  blogsTable, infosTable,
+         },
   setup() {
     const model = ref();
     const title = ref('');

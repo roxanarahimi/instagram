@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redis;
 use App\Models\User;
-use Kavenegar;
-
 
 class UserController extends Controller
 
@@ -277,13 +275,12 @@ class UserController extends Controller
             for ($i = 0; $i < 5; $i++) {
                 $randomString .= $characters[rand(0, $charactersLength - 1)];
             }
-//            Redis::set($mobile, $randomString, 60);
-
+            Redis::set($mobile, $randomString, 60);
             try {
                 $sender = "2000500666";        //This is the Sender number
-                $message = "به وبسایت عسل لذیذ خوش آمدید. کد تایید شما: " . Redis::get($mobile);        //The body of SMS
+                $message = "به وبسایت وان آنلاین شاپ خوش آمدید. کد تایید شما: " . Redis::get($mobile);        //The body of SMS
                 $receptor = "09128222725";            //Receptors numbers
-                $result = Kavenegar::Send($sender, $receptor, $message);
+//              $result = Kavenegar::Send($sender, $receptor, $message);
 //                $code = Redis::get($mobile);
 
 
@@ -325,34 +322,15 @@ class UserController extends Controller
         }
     }
 
-    public function otp(Request $request)
-    {
-        try {
-            $sender = "10005989";        //This is the Sender number
-
-            $message = "به وبسایت عسل لذیذ خوش آمدید";        //The body of SMS
-
-
-
-            $receptor = $request['mobile'];            //Receptors numbers
-
-            $result = Kavenegar::Send($sender, $receptor, $message);
-
-            return $result;
-        } catch (\Kavenegar\Exceptions\ApiException $e) {
-            // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
-            return $e->errorMessage();
-        } catch (\Kavenegar\Exceptions\HttpException $e) {
-            // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
-            return $e->errorMessage();
-        }
-    }
     public function otp1()
     {
-        try {
-            $sender = "10005989";        //This is the Sender number
+//        require '/vendor/autoload.php';
 
-            $message = "به وبسایت عسل لذیذ خوش آمدید";        //The body of SMS
+//        require __DIR__ . '\..\..\..\vendor\autoload.php';
+        try {
+            $sender = "2000500666";        //This is the Sender number
+
+            $message = "به وبسایت وان آنلاین شاپ خوش آمدید";        //The body of SMS
 
             $receptor = "09128222725";            //Receptors numbers
 
