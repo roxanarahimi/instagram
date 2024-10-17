@@ -22,41 +22,21 @@
 <script>
 import App from './App';
 import Loader from '../components/Loader';
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 import LatestProducts from "./dashboard/LatestProducts";
 import DayReportCards from "./dashboard/DayReportCards";
 
 export default {
     components: {LatestProducts, App, Loader, DayReportCards},
     setup() {
-        const articles = ref({});
-        const products = ref({});
-        const loadArticles= ()=>{
-            axios.get('/api/panel/article?page=1&perPage=4')
-                .then((response) => {
-                    articles.value = response.data.data;
 
-
-                })
-                .catch();
-        }
-        const loadProducts= ()=>{
-            axios.get('/api/panel/product?page=1&perPage=4')
-                .then((response) => {
-                    console.log(response.data)
-                    products.value = response.data.data;
-
-
-                })
-                .catch();
-        }
         onMounted(() => {
             document.querySelector('#admin_label').innerHTML = JSON.parse(localStorage.getItem('admin')).name;
-            loadArticles();
-            loadProducts();
 
         });
-        return { articles, loadArticles,loadProducts, products}
+        return {
+
+        }
     },
 
 

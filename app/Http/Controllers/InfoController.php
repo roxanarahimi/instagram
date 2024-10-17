@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Resources\InfoResource;
 use App\Models\Info;
 use Illuminate\Http\Request;
-
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
+use Tests\Browser\SaveWebPageTest;
 class InfoController extends Controller
 {
     public function index(Request $request)
@@ -66,5 +68,10 @@ class InfoController extends Controller
             return \response('deleted successfully',200);
 
         }catch (\Exception $exception){ return $exception; }
+    }
+
+    public function test()
+    {
+       (new SaveWebPageTest)->index();
     }
 }

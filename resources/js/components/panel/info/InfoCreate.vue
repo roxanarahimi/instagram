@@ -148,11 +148,11 @@ export default {
         },
     methods: {
         loadData() {
-            axios.get('https://api.notjustanalytics.com/profile/ig/history/65105100201?follower=&following=&post=&date=')
-                .then((response) => {
-                    console.log('aaa',response);
-                })
-                .catch();
+            // axios.get('https://api.notjustanalytics.com/profile/ig/history/65105100201?follower=&following=&post=&date=')
+            //     .then((response) => {
+            //         console.log('aaa',response);
+            //     })
+            //     .catch();
         },
 
         async createInfo() {

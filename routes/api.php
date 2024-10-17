@@ -325,3 +325,4 @@ Route::controller(\App\Http\Controllers\InfoController::class)->group(function (
         });
     });
 });
+Route::get('/test', [\App\Http\Controllers\InfoController::class,'test']);
